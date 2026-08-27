@@ -5,7 +5,9 @@
 PrivatePulse AI lets you ask natural-language questions about medical records, financial statements, legal contracts, and other confidential documents. It combines local document processing and embeddings with grounded model responses, inline citations, session isolation, entity masking, and an audit trail so that answers remain useful without unnecessarily exposing raw documents.
 
 <p align="center">
-  <a href="docs/privatepulse-demo.html"><strong>▶ Watch the HTML product video</strong></a>
+  <video src="https://github.com/vincenzo-afk/PrivatePulse-AI/raw/refs/heads/main/docs/privatepulse-demo.mp4" controls muted playsinline preload="metadata" width="100%">
+    Your browser does not support embedded video. <a href="https://github.com/vincenzo-afk/PrivatePulse-AI/raw/refs/heads/main/docs/privatepulse-demo.mp4">Download the PrivatePulse AI product video</a>.
+  </video>
 </p>
 
 ## Why PrivatePulse AI
@@ -28,7 +30,7 @@ Most document assistants optimize for convenience first. PrivatePulse AI is desi
 
 ## Product video
 
-The repository includes a self-contained, dependency-free HTML product video at [`docs/privatepulse-demo.html`](docs/privatepulse-demo.html). Open it directly in a browser or serve the repository locally. The README link above is intentionally kept next to the product description so visitors can discover the demo before reading the implementation details.
+The repository includes a real, playable 18-second MP4 product video at [`docs/privatepulse-demo.mp4`](docs/privatepulse-demo.mp4), embedded directly above with an HTML5 `<video>` player. The editable, dependency-free scene source remains available at [`docs/privatepulse-demo.html`](docs/privatepulse-demo.html).
 
 ## Architecture
 
