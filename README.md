@@ -5,10 +5,11 @@
 PrivatePulse AI lets you ask natural-language questions about medical records, financial statements, legal contracts, and other confidential documents. It combines local document processing and embeddings with grounded model responses, inline citations, session isolation, entity masking, and an audit trail so that answers remain useful without unnecessarily exposing raw documents.
 
 <p align="center">
-  <video src="https://github.com/vincenzo-afk/PrivatePulse-AI/raw/refs/heads/main/docs/privatepulse-demo.mp4" controls muted playsinline preload="metadata" width="100%">
-    Your browser does not support embedded video. <a href="https://github.com/vincenzo-afk/PrivatePulse-AI/raw/refs/heads/main/docs/privatepulse-demo.mp4">Download the PrivatePulse AI product video</a>.
-  </video>
+  <a href="https://github.com/vincenzo-afk/PrivatePulse-AI/raw/refs/heads/main/docs/privatepulse-demo.mp4">
+    <img src="docs/privatepulse-demo.gif" alt="Animated PrivatePulse AI product video preview" width="100%">
+  </a>
 </p>
+<p align="center"><strong>▶ Click the preview to open the full playable MP4</strong></p>
 
 ## Why PrivatePulse AI
 
@@ -30,7 +31,7 @@ Most document assistants optimize for convenience first. PrivatePulse AI is desi
 
 ## Product video
 
-The repository includes a real, playable 18-second MP4 product video at [`docs/privatepulse-demo.mp4`](docs/privatepulse-demo.mp4), embedded directly above with an HTML5 `<video>` player. The editable, dependency-free scene source remains available at [`docs/privatepulse-demo.html`](docs/privatepulse-demo.html).
+The repository includes a real, playable 18-second MP4 product video at [`docs/privatepulse-demo.mp4`](docs/privatepulse-demo.mp4), plus an animated GIF preview rendered inline above so GitHub visitors can see the video directly inside the README. Click the preview to open the full MP4. The editable, dependency-free scene source remains available at [`docs/privatepulse-demo.html`](docs/privatepulse-demo.html).
 
 ## Architecture
 
