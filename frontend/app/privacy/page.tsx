@@ -1,9 +1,10 @@
 "use client";
 
-import { ShieldCheck, LockKeyhole, Database, EyeOff, FileCheck2, ChevronDown } from "lucide-react";
+import { ShieldCheck, FileCheck2, ChevronDown } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
 import { DataFlowDiagram } from "@/components/privacy/DataFlowDiagram";
 import { PrivacyChecklist } from "@/components/privacy/PrivacyChecklist";
+import { PrivacyDashboard } from "@/components/privacy/PrivacyDashboard";
 
 const technicalDetails = [
   ["Embeddings", "Ollama nomic-embed-text by default, with an OpenAI-compatible provider option."],
@@ -27,11 +28,7 @@ export default function PrivacyPage() {
           </p>
         </header>
 
-        <section className="grid gap-4 md:grid-cols-3" aria-label="Privacy guarantees">
-          <div className="card-base p-5"><LockKeyhole className="mb-4 h-5 w-5 text-accent" /><h2 className="font-semibold text-text-primary">Scoped sessions</h2><p className="mt-2 text-sm leading-6 text-text-secondary">Each browser session gets its own identifier for documents, indexes, and audit records.</p></div>
-          <div className="card-base p-5"><Database className="mb-4 h-5 w-5 text-accent" /><h2 className="font-semibold text-text-primary">Minimum context</h2><p className="mt-2 text-sm leading-6 text-text-secondary">Retrieval selects a small set of relevant chunks instead of sending the entire document collection.</p></div>
-          <div className="card-base p-5"><EyeOff className="mb-4 h-5 w-5 text-accent" /><h2 className="font-semibold text-text-primary">Masked previews</h2><p className="mt-2 text-sm leading-6 text-text-secondary">Source previews mask common identifiers such as SSNs, phone numbers, emails, and account numbers.</p></div>
-        </section>
+        <PrivacyDashboard />
 
         <section className="grid gap-6 lg:grid-cols-[1.1fr_.9fr]">
           <DataFlowDiagram />
