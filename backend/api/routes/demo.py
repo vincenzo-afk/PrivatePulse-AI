@@ -17,6 +17,7 @@ from models.session import UserSession
 from schemas.document import DocumentListResponse, DocumentSchema
 from services.audit import AuditEventType, log_event
 from core.exceptions import PrivatePulseError
+from core.security import validate_session_id
 from .documents import process_document_background
 from fastapi import BackgroundTasks
 
@@ -58,6 +59,8 @@ async def load_demo_documents(
             "SESSION_ID_REQUIRED",
             "A session_id or X-Session-ID header is required",
         )
+    if not validate_session_id(session_id):
+        raise PrivatePulseError("INVALID_SESSION_ID", "The session ID must be a valid UUID")
 
     source_dir = Path(__file__).resolve().parents[2] / "data" / "demo_documents"
     session_dir = Path(settings.upload_dir) / session_id
