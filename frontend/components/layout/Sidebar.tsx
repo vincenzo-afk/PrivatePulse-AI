@@ -6,6 +6,7 @@ import {
   MessageSquare,
   ClipboardList,
   Settings,
+  LayoutDashboard,
   X,
   ShieldCheck,
   ChevronLeft,
@@ -24,6 +25,8 @@ const iconMap: Record<string, React.ElementType> = {
   MessageSquare,
   ClipboardList,
   Settings,
+  LayoutDashboard,
+  ShieldCheck,
 };
 
 export function Sidebar({ open, onClose }: SidebarProps) {

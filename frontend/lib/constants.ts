@@ -15,7 +15,9 @@ export const SESSION_STORAGE_KEY = "privatepulse_session_id";
 export const SETTINGS_STORAGE_KEY = "privatepulse_settings";
 
 export const NAV_ITEMS = [
+  { label: "Dashboard", href: "/dashboard", icon: "LayoutDashboard" },
   { label: "Chat", href: "/chat", icon: "MessageSquare" },
+  { label: "Privacy", href: "/privacy", icon: "ShieldCheck" },
   { label: "Audit Log", href: "/audit", icon: "ClipboardList" },
   { label: "Settings", href: "/settings", icon: "Settings" },
 ] as const;
