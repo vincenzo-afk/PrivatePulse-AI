@@ -5,10 +5,14 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ShieldCheck, MessageSquare, ArrowRight } from "lucide-react";
 import { SESSION_STORAGE_KEY } from "@/lib/constants";
+import { demoApi } from "@/lib/api";
+import { useAppStore } from "@/lib/store";
 
 export default function LandingPage() {
   const router = useRouter();
+  const setSessionId = useAppStore((state) => state.setSessionId);
   const [mounted, setMounted] = useState(false);
+  const [loadingDemo, setLoadingDemo] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -21,11 +25,24 @@ export default function LandingPage() {
   const handleStartChat = () => {
     const sessionId = localStorage.getItem(SESSION_STORAGE_KEY);
     if (sessionId) {
+      setSessionId(sessionId);
       router.push("/chat");
     } else {
       const newId = crypto.randomUUID();
-      localStorage.setItem(SESSION_STORAGE_KEY, newId);
+      setSessionId(newId);
       router.push("/chat");
+    }
+  };
+
+  const handleStartDemo = async () => {
+    setLoadingDemo(true);
+    const sessionId = localStorage.getItem(SESSION_STORAGE_KEY) || crypto.randomUUID();
+    setSessionId(sessionId);
+    try {
+      await demoApi.load(sessionId, "all");
+      router.push("/chat");
+    } catch {
+      setLoadingDemo(false);
     }
   };
 
@@ -82,17 +99,27 @@ export default function LandingPage() {
             Ask questions about your sensitive documents and get instant, accurate answers with full privacy protection.
           </p>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            onClick={handleStartChat}
-            className="btn-primary rounded-xl px-8 py-3.5 text-base inline-flex items-center gap-2 glow-accent"
-          >
-            <MessageSquare className="h-5 w-5" />
-            Start Chat
-            <ArrowRight className="h-5 w-5" />
-          </motion.button>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              onClick={handleStartDemo}
+              disabled={loadingDemo}
+              className="btn-primary rounded-xl px-8 py-3.5 text-base inline-flex items-center gap-2 glow-accent disabled:cursor-wait disabled:opacity-70"
+            >
+              <MessageSquare className="h-5 w-5" />
+              {loadingDemo ? "Loading demo…" : "Start with Demo Documents"}
+              <ArrowRight className="h-5 w-5" />
+            </motion.button>
+            <button
+              type="button"
+              onClick={handleStartChat}
+              className="rounded-xl border border-border px-8 py-3.5 text-base text-text-secondary transition-colors hover:border-accent/30 hover:text-text-primary"
+            >
+              Upload your own
+            </button>
+          </div>
         </motion.div>
       </main>
 

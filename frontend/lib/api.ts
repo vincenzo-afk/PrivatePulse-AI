@@ -106,6 +106,13 @@ export const chatApi = {
   },
 };
 
+export const demoApi = {
+  load: async (sessionId: string, demoSet: "medical" | "financial" | "legal" | "all" = "all"): Promise<{ documents: Document[] }> => {
+    const { data } = await client.post("/demo/load", { session_id: sessionId, demo_set: demoSet });
+    return data;
+  },
+};
+
 export const auditApi = {
   getEvents: async (
     sessionId: string,
