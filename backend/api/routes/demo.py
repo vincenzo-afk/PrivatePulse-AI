@@ -41,7 +41,7 @@ class DemoLoadError(PrivatePulseError):
     """Raised when a requested demo file is unavailable."""
 
     def __init__(self, filename: str):
-        super().__init__("DEMO_FILE_NOT_FOUND", f"Demo file is unavailable: {filename}", 500)
+        super().__init__("DEMO_FILE_NOT_FOUND", f"Demo file is unavailable: {filename}", {"filename": filename})
 
 
 @router.post("/load", response_model=DocumentListResponse)
@@ -54,7 +54,10 @@ async def load_demo_documents(
     """Load synthetic documents into the caller's isolated session."""
     session_id = payload.session_id or x_session_id
     if not session_id:
-        raise ValueError("A session_id or X-Session-ID header is required")
+        raise PrivatePulseError(
+            "SESSION_ID_REQUIRED",
+            "A session_id or X-Session-ID header is required",
+        )
 
     source_dir = Path(__file__).resolve().parents[2] / "data" / "demo_documents"
     session_dir = Path(settings.upload_dir) / session_id
