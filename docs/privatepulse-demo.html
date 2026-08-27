@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PrivatePulse AI — Product video</title>
+  <style>
+    :root { color-scheme: dark; --bg:#071312; --panel:#0d211e; --line:#1d4c43; --text:#effffb; --muted:#9abdb5; --accent:#00d4aa; --accent-2:#68e6d0; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; overflow:hidden; font:16px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; color:var(--text); background:radial-gradient(circle at 50% 0%, #133a33 0, var(--bg) 52%); }
+    .video { width:min(1120px, 94vw); aspect-ratio:16/9; position:relative; overflow:hidden; border:1px solid var(--line); border-radius:24px; background:linear-gradient(135deg,#091916,#07100f); box-shadow:0 30px 90px #0008, 0 0 0 1px #00d4aa18; }
+    .grain { position:absolute; inset:0; opacity:.06; pointer-events:none; background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px); background-size:64px 64px; mask-image:linear-gradient(to bottom,black,transparent); }
+    .scene { position:absolute; inset:0; padding:clamp(24px,5vw,72px); display:grid; align-content:center; gap:20px; opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
+    .scene.active { opacity:1; transform:none; }
+    .eyebrow { color:var(--accent); letter-spacing:.14em; text-transform:uppercase; font-size:12px; font-weight:750; }
+    h1 { max-width:720px; margin:0; font-size:clamp(34px,6vw,76px); line-height:.98; letter-spacing:-.055em; }
+    h2 { margin:0; font-size:clamp(26px,4vw,50px); letter-spacing:-.04em; }
+    p { max-width:620px; color:var(--muted); font-size:clamp(16px,2vw,22px); margin:0; }
+    .pill { display:inline-flex; width:max-content; align-items:center; gap:9px; border:1px solid #00d4aa55; background:#00d4aa12; padding:8px 12px; border-radius:99px; color:var(--accent-2); font-size:13px; }
+    .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 16px var(--accent); }
+    .mock { width:min(760px,100%); border:1px solid var(--line); background:#0b1b19e8; border-radius:16px; padding:18px; display:grid; gap:14px; box-shadow:0 20px 50px #0005; }
+    .bar { display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:13px; }
+    .bar strong { color:var(--text); }
+    .drop { border:1px dashed #3f8175; min-height:90px; display:grid; place-items:center; border-radius:12px; color:var(--accent-2); background:#00d4aa09; }
+    .chat { display:grid; gap:12px; max-width:820px; }
+    .bubble { padding:14px 16px; border-radius:14px; max-width:75%; border:1px solid var(--line); }
+    .user { justify-self:end; color:var(--text); background:#00d4aa18; }
+    .answer { color:#d8fff6; background:#0e2723; }
+    .cite { color:var(--accent); font-size:12px; margin-top:7px; display:block; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:780px; }
+    .metric { padding:18px; border:1px solid var(--line); border-radius:14px; background:#0d211e; }
+    .metric b { display:block; color:var(--accent); font-size:28px; }
+    .metric span { color:var(--muted); font-size:13px; }
+    .controls { position:absolute; left:0; right:0; bottom:0; padding:18px 24px; display:flex; align-items:center; gap:14px; background:linear-gradient(transparent,#06100fdd); }
+    button { border:0; border-radius:9px; padding:9px 14px; color:#04201a; background:var(--accent); font-weight:800; cursor:pointer; }
+    .track { height:3px; flex:1; background:#ffffff28; border-radius:9px; overflow:hidden; }
+    .progress { height:100%; width:0; background:var(--accent); transition:width .2s linear; }
+    .time { color:var(--muted); font-size:12px; min-width:46px; text-align:right; }
+    @media (max-width:650px) { .metrics { grid-template-columns:1fr; } .metric { padding:12px; } .metric b { font-size:22px; } .bubble { max-width:94%; } }
+  </style>
+</head>
+<body>
+  <main class="video" aria-label="PrivatePulse AI product video">
+    <div class="grain"></div>
+    <section class="scene active" data-duration="4">
+      <span class="pill"><i class="dot"></i> Privacy-first document intelligence</span>
+      <h1>Your documents.<br>Your AI assistant.</h1>
+      <p>PrivatePulse AI turns sensitive PDFs, DOCX files, TXT files, and images into a grounded, citation-ready conversation.</p>
+    </section>
+    <section class="scene" data-duration="5">
+      <span class="eyebrow">01 / Ingest securely</span>
+      <h2>Bring the document.<br>Keep control of the data.</h2>
+      <div class="mock"><div class="bar"><strong>Private workspace</strong><span>Session isolated</span></div><div class="drop">Drop PDF, DOCX, TXT, or image files here</div><div class="bar"><span>employee-handbook.pdf</span><span style="color:var(--accent)">Indexed locally</span></div></div>
+    </section>
+    <section class="scene" data-duration="6">
+      <span class="eyebrow">02 / Ask naturally</span>
+      <h2>Answers grounded<br>in your sources.</h2>
+      <div class="chat"><div class="bubble user">What is the reimbursement limit for client travel?</div><div class="bubble answer">The policy sets a maximum reimbursement of $2,500 per trip, with receipts required for expenses over $25.<span class="cite">Source: employee-handbook.pdf · p. 18</span></div></div>
+    </section>
+    <section class="scene" data-duration="5">
+      <span class="eyebrow">03 / Understand more</span>
+      <h2>Text, scans, charts,<br>and images in one flow.</h2>
+      <p>Vision-enabled queries handle image uploads and scanned PDFs with an OCR fallback, while local embeddings keep retrieval fast and controlled.</p>
+      <div class="metrics"><div class="metric"><b>PDF</b><span>Multi-format ingestion</span></div><div class="metric"><b>OCR</b><span>Scanned document fallback</span></div><div class="metric"><b>5</b><span>Images per request</span></div></div>
+    </section>
+    <section class="scene" data-duration="4">
+      <span class="pill"><i class="dot"></i> Built for sensitive workflows</span>
+      <h1>Private by design.<br>Useful by default.</h1>
+      <p>Explore the code, run the stack locally, and interrogate your documents with a clear audit trail and inline citations.</p>
+    </section>
+    <div class="controls"><button id="toggle" type="button">Pause</button><div class="track"><div class="progress" id="progress"></div></div><span class="time" id="time">1 / 5</span></div>
+  </main>
+  <script>
+    const scenes=[...document.querySelectorAll('.scene')], progress=document.querySelector('#progress'), time=document.querySelector('#time'), toggle=document.querySelector('#toggle');
+    let index=0, elapsed=0, playing=true, last=performance.now();
+    function show(i){ scenes.forEach((s,n)=>s.classList.toggle('active',n===i)); time.textContent=`${i+1} / ${scenes.length}`; }
+    function tick(now){ const dt=(now-last)/1000; last=now; if(playing){ elapsed+=dt; const duration=Number(scenes[index].dataset.duration); progress.style.width=`${Math.min(100,elapsed/duration*100)}%`; if(elapsed>=duration){ index=(index+1)%scenes.length; elapsed=0; show(index); } } requestAnimationFrame(tick); }
+    toggle.addEventListener('click',()=>{ playing=!playing; toggle.textContent=playing?'Pause':'Play'; last=performance.now(); });
+    show(0); requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
+
